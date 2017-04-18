@@ -1,37 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package juegotabla;
 
+/**
+ *
+ * @author CSI-PRO
+ */
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Emilio Wong
  */
-class Game {
-
+class Game extends JFrame {
+    validacionNumero val = new validacionNumero();
     String pregunta = "¿Cuánto es...?";
     int cont = 1;
     static String[] done = {};
     Scanner scan = new Scanner(System.in);
     int puntaje = 0;
+    int respuesta;
+    int num1;
+    int num2;
 
     Game() {
-        System.out.println(pregunta);
         for (int i = 0; i < 10; i++) {
-
-            //System.out.println(cont);
-            int num1 = Game.tablaNumeros();
+            System.out.println(pregunta);
+            int num1 = Game.numeroAleatorio();
             System.out.print(num1);
             System.out.print("x");
-            int num2 = Game.tablaNumeros();
+            int num2 = Game.numeroAleatorio();
             System.out.print(num2);
             System.out.println("");
-            int respuesta = scan.nextInt();
-            if (respuesta == (num1 * num2)) {
+            String respuesta = scan.nextLine();
+            boolean bandera = true;
+            
+           while(bandera){
+               System.out.println("entre al wail");
+               if (val.validar(respuesta)) {
+                   System.out.println("simon");
+                   bandera = false;
+               }
+           }
+           Integer res = Integer.parseInt(respuesta);
+            if (res == (num1 * num2)) {
                 System.out.println("Correcto");
                 puntaje++;
                 cont++;
@@ -43,18 +54,33 @@ class Game {
             }
         }
         System.out.println("Fin del juego");
-        System.out.println("Obtuviste: "+puntaje+" puntos");
+        System.out.println("Obtuviste: " + puntaje + " puntos");
     }
 
-    public static int tablaNumeros() {
-        Integer rand = (int) (Math.random() * 10);
-        for (int i = 0; i < done.length; i++) {
-            if (done[i] != rand.toString()) {
-
-            } else {
-                done[done.length - 1] = rand.toString();
+    public static int numeroAleatorio() {
+        int random = 0;
+        boolean bandera = true;
+        while (bandera) {
+            random = (int) (Math.random() * 10);
+            if (random != 0) {
+                bandera = false;
             }
         }
-        return rand;
+
+        return random;
     }
+    public static int numeroAleatorioMedio() {
+        int random = 0;
+        boolean bandera = true;
+        while (bandera) {
+            random = (int) (Math.random() * 50);
+            if (random != 0) {
+                bandera = false;
+            }
+        }
+
+        return random;
+    }
+    
 }
+

@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package juegotabla;
 
 /**
  *
- * @author Emilio Wong
+ * @author Alumnos
  */
 public class JuegoTabla {
 
@@ -15,8 +16,7 @@ public class JuegoTabla {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Game game = new Game();
-
+       Game Tabla = new Game();
     }
     
 }
